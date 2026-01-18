@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The New Yorker - The Devotion Issue</title>
+    <style>
+        /* --- THE NEW YORKER AESTHETIC ENGINE --- */
+        :root {
+            --paper: #f9f9f7;
+            --ink: #181818;
+            --red: #d0021b;
+            --font-main: 'Georgia', 'Times New Roman', serif;
+            --font-head: 'Didot', 'Bodoni MT', 'Times New Roman', serif;
+            --font-sans: 'Futura', 'Gill Sans', 'Arial', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: var(--font-main);
+            font-size: 18px; /* Optimized for mobile reading */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        .masthead-logo {
+            font-family: var(--font-head);
+            font-weight: 400;
+            font-size: 13vw; /* Responsive scaling */
+            line-height: 0.8;
+            letter-spacing: -1px;
+            text-align: center;
+            transform: scaleY(1.05);
+            margin: 20px 0 10px 0;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .masthead-logo { font-size: 5.5rem; letter-spacing: -4px; }
+            body { font-size: 19px; }
+        }
+
+        h1, h2, h3 { font-weight: normal; }
+
+        .irvin { font-family: var(--font-head); letter-spacing: -0.5px; }
+        .rubric { 
+            color: var(--red); 
+            font-family: var(--font-sans); 
+            font-size: 0.7rem; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+            font-weight: 600;
+            margin: 40px 0 15px 0; 
+            display: block; 
+            text-align: center; 
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--paper);
+        }
+
+        /* Responsive Columns */
+        .two-col { column-count: 1; column-gap: 50px; }
+        .three-col { display: grid; grid-template-columns: 1fr; gap: 30px; border-top: 1px solid #000; padding-top: 25px; }
+        
+        @media (min-width: 768px) {
+            .two-col { column-count: 2; }
+            .three-col { grid-template-columns: repeat(3, 1fr); }
+            .container { padding: 50px; }
+        }
+        
+        .divider-thick { border-top: 1px solid #000; border-bottom: 1px solid #000; height: 4px; margin: 40px 0; }
+        .divider-double { border-top: 4px double #000; margin: 40px 0; }
+
+        /* --- ILLUSTRATION ENGINE --- */
+        .art-frame {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px auto;
+        }
+
+        svg { 
+            display: block; 
+            width: 100%; 
+            height: auto; 
+            overflow: visible; 
+            max-width: 100%;
+        }
+        
+        .line-art { fill: none; stroke: #111; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .line-bold { fill: none; stroke: #111; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        
+        /* --- COVER --- */
+        .cover {
+            min-height: 100vh;
+            border-left: none;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            .cover { border-left: 12px solid #111; padding: 40px 60px; }
+        }
+
+        .meta-data { 
+            font-family: var(--font-sans); 
+            font-size: 0.75rem; 
+            margin-bottom: 20px;
+            border-bottom: 2px solid #111;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- TEXT --- */
+        p { margin-bottom: 1.4rem; text-align: justify; }
+        .feature-title { font-family: var(--font-head); font-size: 2.5rem; text-align: center; line-height: 1; margin: 20px 0; }
+        .feature-deck { font-family: var(--font-main); font-style: italic; font-size: 1.2rem; text-align: center; color: #555; margin-bottom: 40px; }
+        
+        @media (min-width: 768px) { 
+            .feature-title { font-size: 3.8rem; } 
+            .meta-data { font-size: 0.8rem; letter-spacing: 1px; }
+        }
+
+        .drop-cap { float: left; font-family: var(--font-head); font-size: 4.5rem; line-height: 0.8; margin-right: 12px; margin-top: 4px; }
+        .caption { font-family: var(--font-sans); font-size: 0.7rem; color: #555; text-align: center; margin-top: 15px; font-style: italic; width: 100%; }
+        .listing-title { font-weight: bold; font-family: var(--font-sans); font-size: 0.75rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- THE COVER -->
+    <div class="cover">
+        <div class="masthead-logo">THE NEW YORKER</div>
+        
+        <div class="meta-data">
+            <span>Jan. 18, 2026</span>
+            <span>The Devotion Issue</span>
+            <span>$9.99</span>
+        </div>
+
+        <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            
+            <!-- COVER ART: PHONE -->
+            <div class="art-frame" style="max-width: 300px;">
+                <svg viewBox="0 0 200 250">
+                    <!-- Phone Base -->
+                    <path class="line-art" d="M40 180 L160 180 L170 220 L30 220 Z" />
+                    <rect class="line-art" x="70" y="190" width="60" height="20" rx="2" />
+                    <!-- Handset -->
+                    <path class="line-art" d="M30 150 C 10 150, 10 180, 40 180 L160 180 C 190 180, 190 150, 170 150 L30 150" />
+                    <!-- Cord -->
+                    <path stroke="#d0021b" stroke-width="2" fill="none" d="M170 200 C 220 200, 220 100, 100 100 C 50 100, 120 50, 100 30 C 80 50, 150 100, 100 100 C -20 100, -20 200, 30 200" />
+                    <!-- Hearts -->
+                    <path d="M100 30 L95 25 A 5 5 0 0 1 105 25 Z" fill="#d0021b" />
+                </svg>
+            </div>
+            <div class="feature-deck" style="font-family: var(--font-head); color: var(--red); margin-top: 20px;">"The Distance Between Us Is Fiction"</div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- THE MAIL -->
+        <div class="rubric">THE MAIL</div>
+        <div style="font-size: 1rem; margin-bottom: 40px; max-width: 680px; margin-left: auto; margin-right: auto;">
+            <p><strong>REGARDING PRESENCE</strong><br>
+            To the Editors:<br>
+            Your recent issue classified Niv and Aaradhya as "long-distance." I must dissent. Distance implies absence. Yet, when she sends a picture, she is more present in his room than the furniture. When he solves a <em>Murdle</em> puzzle she sent, she is holding the pen with him. Distance is geography; belonging is physics. She is not "there"; she is everywhere he is.</p>
+            <p style="text-align: right; font-style: italic;">—The Heart, Logic Dept.</p>
+        </div>
+
+        <div class="divider-thick"></div>
+
+        <!-- GOINGS ON -->
+        <h2 class="irvin" style="margin-bottom: 25px; font-size: 1.8rem; text-transform: uppercase;">Goings On About Town</h2>
+        <div class="three-col">
+            <div>
+                <div class="listing-title">TABLES FOR TWO</div>
+                <div style="font-size: 0.95rem; margin-bottom: 20px;">
+                    <b>The Voice Call.</b>
+                    <br>An exclusive nightly engagement. No video feed, just the sound of breathing and the best conversation in the hemisphere. The menu features "The Whole Truth" protein bars and cans of Diet Coke. 5 stars.
+                </div>
+            </div>
+            <div>
+                <div class="listing-title">ART & GALLERIES</div>
+                <div style="font-size: 0.95rem; margin-bottom: 20px;">
+                    <b>The Saved Video Collection.</b>
+                    <br>A private viewing. Niv watches the clips she sends of her art, her room, her world—on a loop. He studies them. He knows these pixels better than his own hands.
+                </div>
+            </div>
+            <div>
+                <div class="listing-title">LOGISTICS</div>
+                <div style="font-size: 0.95rem; margin-bottom: 20px;">
+                    <b>The Puzzle Society.</b>
+                    <br>Meeting nightly. Featuring <i>Murdle Vol. 1</i>. She supplies the mystery; he supplies the deduction. It is the perfect crime of stealing each other's hearts.
+                </div>
+            </div>
+        </div>
+
+        <div class="divider-double"></div>
+
+        <!-- TALK OF THE TOWN -->
+        <div class="rubric">THE TALK OF THE TOWN</div>
+        <h2 class="irvin" style="text-align: center; font-size: 2.5rem; margin-bottom: 40px; line-height: 1;">THE TALK OF THE TOWN</h2>
+
+        <div class="two-col">
+            <!-- VIGNETTE 1 -->
+            <div style="break-inside: avoid; margin-bottom: 40px;">
+                <div class="listing-title" style="margin-bottom: 5px;">LOGISTICS</div>
+                <div class="irvin" style="font-size: 1.6rem; font-style: italic; margin-bottom: 15px;">The Single Can Theory</div>
+                
+                <!-- Illustration: Diet Coke Can (Vertical) -->
+                <div class="art-frame" style="max-width: 80px;">
+                    <svg viewBox="0 0 60 120">
+                        <ellipse class="line-art" cx="30" cy="15" rx="20" ry="5" /> <!-- Top -->
+                        <path class="line-art" d="M10 15 L10 105 C 10 110, 50 110, 50 105 L50 15" /> <!-- Body -->
+                        <path class="line-art" d="M10 20 C 10 25, 50 25, 50 20" /> <!-- Rim -->
+                        
+                        <!-- Vertical Text -->
+                        <text x="-70" y="35" transform="rotate(-90)" font-family="Arial" font-weight="900" font-size="14" fill="#111" letter-spacing="1">DIET</text>
+                        <text x="-70" y="47" transform="rotate(-90)" font-family="Arial" font-weight="bold" font-size="10" fill="#111">COKE</text>
+                        
+                        <!-- Swirl -->
+                        <path class="line-art" d="M10 90 Q 30 80 50 100" stroke-width="1" />
+                    </svg>
+                </div>
+
+                <p>There is a distinct difference between a generic gift and a targeted strike of affection. A generic gift is a crate of soda. A targeted strike is a single can of Diet Coke, sent across state lines.</p>
+                <p>Aaradhya deals in targeted strikes. She sends "The Whole Truth" protein bars because she knows Niv forgets to eat. She sends a specific can of fizz because she knows he needs a lift. It is not about volume; it is about precision. It is her way of saying, <em>"I am watching over you, even from here."</em></p>
+            </div>
+
+            <!-- VIGNETTE 2 -->
+            <div style="break-inside: avoid; margin-bottom: 40px;">
+                <div class="listing-title" style="margin-bottom: 5px;">DEPT. OF DEDUCTION</div>
+                <div class="irvin" style="font-size: 1.6rem; font-style: italic; margin-bottom: 15px;">The Murdle Incident</div>
+                
+                <!-- Illustration: Open Book & Magnifier -->
+                <div class="art-frame" style="max-width: 140px;">
+                    <svg viewBox="0 0 140 80">
+                        <!-- Book Shape (Wide aspect ratio) -->
+                        <rect class="line-art" x="10" y="20" width="120" height="50" rx="2" /> <!-- Cover -->
+                        <line class="line-art" x1="70" y1="20" x2="70" y2="70" /> <!-- Spine -->
+                        <line class="line-art" x1="15" y1="20" x2="15" y2="70" /> <!-- Left Edge -->
+                        <line class="line-art" x1="125" y1="20" x2="125" y2="70" /> <!-- Right Edge -->
+                        
+                        <!-- Text Lines on Pages -->
+                        <line class="line-art" x1="25" y1="30" x2="60" y2="30" />
+                        <line class="line-art" x1="25" y1="40" x2="60" y2="40" />
+                        <line class="line-art" x1="80" y1="30" x2="115" y2="30" />
+                        <line class="line-art" x1="80" y1="40" x2="115" y2="40" />
+                        
+                        <!-- Magnifier (Perfect Circle) -->
+                        <circle class="line-bold" cx="95" cy="50" r="15" fill="#fff" fill-opacity="0.9"/>
+                        <line class="line-bold" x1="106" y1="60" x2="120" y2="75" />
+                    </svg>
+                </div>
+
+                <p>The book arrived in a bubble mailer: <em>Murdle: Volume 1</em>. A collection of deductive logic puzzles. For Niv, who finds comfort in order, it was a delight. But the subtext was louder than the text.</p>
+                <p>By sending this, she was acknowledging the way his mind works. She wasn't just entertaining him; she was seeing him. She understands his obsession with puzzles and feeds it. She handed him a logic problem and said, "Here, find the solution." He solved the puzzle quickly. He is still solving the depth of her kindness.</p>
+            </div>
+        </div>
+
+        <div class="divider-thick"></div>
+
+        <!-- MAIN FEATURE -->
+        <div class="rubric">ANNALS OF ROMANCE</div>
+        <h1 class="feature-title">THE GEOGRAPHY OF SAFETY</h1>
+        <div class="feature-deck">How I learned to stop running and start belonging.</div>
+        <div class="rubric" style="text-align: center; color: #000; margin-bottom: 40px;">BY NIV</div>
+
+        <!-- HOUSE: Corrected Proportions -->
+        <div class="art-frame" style="max-width: 160px;">
+            <svg viewBox="0 0 160 140">
+                <!-- Roof: Perfect Triangle -->
+                <path class="line-art" d="M30 50 L80 15 L130 50 Z" />
+                <!-- Base: Square and Sturdy -->
+                <path class="line-art" d="M40 50 L40 110 L120 110 L120 50" />
+                <!-- Door -->
+                <rect class="line-art" x="70" y="80" width="20" height="30" />
+                <!-- Text centered below -->
+                <text x="80" y="130" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="10" fill="#555">You are here</text>
+            </svg>
+        </div>
+
+        <div style="max-width: 680px; margin: 0 auto;">
+            <p><span class="drop-cap">I</span> used to believe that safety was a physical location. A room with a lock. But lately, safety has become a voice on the phone. It has become a video file I play three times before bed.</p>
+            
+            <p>We have never video called. I have never seen her face move in real-time on a screen. I only have the videos she sends me—clips of her day, her art, her smile. And strangely, this makes them more precious. I study them. I know the way she laughs in a recording better than I know my own handwriting.</p>
+
+            <div style="border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 30px; margin: 40px 0; text-align: center; font-family: var(--font-head); font-size: 2rem; line-height: 1.2;">
+                "I am not a visitor in her life.<br>I am a resident."
+            </div>
+
+            <p>I have a history of running. "Usually do," I tell myself. But not this time. With Aaradhya, I have no desire to leave. She has created a space—built from protein bars, puzzles, and poetry—where I don't have to defend myself. I don't have to walk on eggshells. I can just exist.</p>
+
+            <p>There is a profound reassurance in her gifts. They are bricks in a house she is building for us. She tells me I am hers, and for the first time in my life, that doesn't feel like a cage. It feels like an address. I belong to her.</p>
+
+            <p>People ask, "How can you be sure if you haven't met?" I point to the nail kit. I point to the peace I feel when her name pops up on my screen. I am sure. I am safe. I am home.</p>
+        </div>
+
+        <div class="divider-double"></div>
+
+        <!-- REVIEW SECTION -->
+        <div class="rubric">CRITIC AT LARGE</div>
+        <h2 class="feature-title" style="font-size: 2.5rem; margin-top: 10px;">THE MASTERPIECE</h2>
+        <div class="feature-deck" style="margin-bottom: 20px;">A review of the Aaradhya experience.</div>
+        
+        <!-- Stars -->
+        <div class="art-frame" style="max-width: 140px; margin-bottom: 20px;">
+            <svg viewBox="0 0 150 30">
+                <g fill="#181818">
+                    <polygon points="15,2 20,12 30,12 22,18 25,28 15,22 5,28 8,18 0,12 10,12"/>
+                    <polygon points="45,2 50,12 60,12 52,18 55,28 45,22 35,28 38,18 30,12 40,12"/>
+                    <polygon points="75,2 80,12 90,12 82,18 85,28 75,22 65,28 68,18 60,12 70,12"/>
+                    <polygon points="105,2 110,12 120,12 112,18 115,28 105,22 95,28 98,18 90,12 100,12"/>
+                    <polygon points="135,2 140,12 150,12 142,18 145,28 135,22 125,28 128,18 120,12 130,12"/>
+                </g>
+            </svg>
+        </div>
+
+        <div style="max-width: 650px; margin: 0 auto; text-align: justify;">
+            <p><strong>SUBJECT:</strong> Aaradhya<br>
+            <strong>RATING:</strong> ★★★★★ (Essential)</p>
+            <p>In a world of low-resolution connections, Aaradhya is high-definition. Her conflict resolution style—characterized by a refusal to let me run and a commitment to making me feel safe—is a triumph of the human spirit.</p>
+            <p>While the physical distance is a noted bug in the current operating system, the software updates she sends (videos, voice notes, art) more than compensate for the lag. She is not just a partner; she is a genre-defining work of art. The verdict is clear: She is the one.</p>
+        </div>
+
+        <div class="divider-thick"></div>
+
+        <!-- CARTOON -->
+        <div class="rubric">THE FUNNY PAGES</div>
+        
+        <div class="art-frame" style="border: 1px solid #111; padding: 20px; max-width: 500px;">
+            <svg class="cartoon-svg" viewBox="0 0 400 180">
+                <!-- Man (Left) - Standing -->
+                <circle class="line-art" cx="100" cy="80" r="14" />
+                <line class="line-art" x1="100" y1="94" x2="100" y2="140" />
+                <line class="line-art" x1="100" y1="140" x2="85" y2="170" />
+                <line class="line-art" x1="100" y1="140" x2="115" y2="170" />
+                <line class="line-art" x1="100" y1="110" x2="115" y2="100" />
+                
+                <!-- Woman (Right) - Standing -->
+                <circle class="line-art" cx="300" cy="80" r="14" />
+                <line class="line-art" x1="300" y1="94" x2="300" y2="140" />
+                <line class="line-art" x1="300" y1="140" x2="285" y2="170" />
+                <line class="line-art" x1="300" y1="140" x2="315" y2="170" />
+                <line class="line-art" x1="300" y1="110" x2="285" y2="100" />
+                
+                <!-- Speech Bubble: SMALLER AND TIGHTER -->
+                <!-- Reduced width from 160 to 140 width units -->
+                <path d="M130 45 L270 45 L270 75 L200 75 L190 90 L180 75 L130 75 Z" fill="#fff" stroke="#111" stroke-width="1.5" />
+                
+                <!-- Text -->
+                <text x="200" y="65" text-anchor="middle" font-family="Arial" font-size="13" fill="#111">"I'm yours. No returns."</text>
+            </svg>
+        </div>
+        <div class="caption">I checked the tracking number. It says my heart arrived at your place three days ago.</div>
+
+        <div class="divider-double"></div>
+
+        <!-- THE BACK PAGE -->
+        <div class="rubric">THE BACK PAGE</div>
+        <h2 class="irvin" style="text-align: center; margin-bottom: 30px;">PUZZLE: THE FINAL DEDUCTION</h2>
+        
+        <div class="art-frame" style="max-width: 200px;">
+            <svg viewBox="0 0 200 200">
+                <rect x="0" y="0" width="200" height="200" fill="none" stroke="#111" stroke-width="2"/>
+                <path d="M50 0 L50 200 M100 0 L100 200 M150 0 L150 200" stroke="#111" stroke-width="1"/>
+                <path d="M0 50 L200 50 M0 100 L200 100 M0 150 L200 150" stroke="#111" stroke-width="1"/>
+                
+                <text x="25" y="35" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">I</text>
+                <text x="25" y="85" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">L</text>
+                <text x="75" y="85" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">O</text>
+                <text x="125" y="85" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">V</text>
+                <text x="175" y="85" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">E</text>
+                
+                <text x="25" y="135" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">Y</text>
+                <text x="75" y="135" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">O</text>
+                <text x="125" y="135" font-family="Courier New" font-weight="bold" font-size="24" text-anchor="middle">U</text>
+            </svg>
+        </div>
+
+        <div class="caption" style="margin-bottom: 60px;">
+            <strong>ACROSS:</strong> 1. What I do. (4 letters)<br>
+            <strong>DOWN:</strong> 1. Who I belong to. (3 letters)
+        </div>
+
+    </div>
+
+    <footer style="background-color: #181818; color: #fff; padding: 60px 20px; text-align: center;">
+        <div class="rubric" style="color: #fff; margin-top: 0;">CONDÉ NAST</div>
+        <div style="font-family: var(--font-main); font-style: italic; font-size: 1.1rem; opacity: 0.8; margin-top: 20px;">
+            For Aaradhya. My poem. My home.
+        </div>
+        <div style="margin-top: 30px; font-size: 2rem; color: #d0021b;">♥</div>
+    </footer>
+
+</body>
+</html>
